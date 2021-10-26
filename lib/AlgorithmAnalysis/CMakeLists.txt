@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.8)
 
-project(AlglrothmAnalysis LANGUAGES C CXX)
+project(c LANGUAGES C CXX)
 
 ########## Set some variables ##########
 
@@ -16,4 +16,4 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Chapter4)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Chapter6)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Chapter7)
 
-add_executable(test_${PROJECT_NAME} AlglrothmAnalysis.cpp)
+add_executable(test_${PROJECT_NAME} AlgorithmAnalysis.cpp)
