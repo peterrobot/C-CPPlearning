@@ -1,4 +1,4 @@
-project(CP_Chapter8)
+project(PL-Chapter2)
 
 aux_source_directory(${PROJECT_SOURCE_DIR}/src DIR_LIB_SRC)
 add_library(${PROJECT_NAME} ${DIR_LIB_SRC})
