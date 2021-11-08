@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.8)
 
-project(c LANGUAGES C CXX)
+project(AlgorithmAnalysis LANGUAGES C CXX)
 
 ########## Set some variables ##########
 

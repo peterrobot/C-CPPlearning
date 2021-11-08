@@ -14,6 +14,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED Ture)
 ########## Add source ##########
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib)
 
+########## specific executable ##########
 add_executable(${PROJECT_NAME} main.cpp)
 
 target_include_directories( ${PROJECT_NAME}

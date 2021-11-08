@@ -1,4 +1,4 @@
-project (Chapter3)
+project (AA_Chapter3)
 
 aux_source_directory(${PROJECT_SOURCE_DIR}/src DIR_LIB_SRCS)
 add_library(${PROJECT_NAME} STATIC ${DIR_LIB_SRCS})
