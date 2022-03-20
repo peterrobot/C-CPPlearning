@@ -4,34 +4,34 @@
 #include <list>
 #include <deque>
 #include <string>
-#include <stdio.h>
+#include <cstdio>
 
 void PrintVec(std::vector<int> &v)
 {
     for(auto a : v)
         printf("%d ", a);
-    printf("From: %0x", v.data());
+    printf_s("From: %p", static_cast<void*>(v.data()));
     puts("");
 }
 
 // Answer for P297-Practice9.4
-bool find(std::vector<int>::const_iterator head, std::vector<int>::const_iterator end, int key)
+bool find(std::vector<int>::const_iterator head, const std::vector<int>::const_iterator end, const int key)
 {
     while (head != end)
     {
         if (*head == key) return true;
-        head++;
+        ++head;
     }
     return false;
 }
 
 // Answer for P297-Practice9.5
-std::vector<int>::const_iterator find_it_bak(std::vector<int>::const_iterator head, std::vector<int>::const_iterator end, int key)
+std::vector<int>::const_iterator find_it_bak(std::vector<int>::const_iterator head, std::vector<int>::const_iterator end, const int key)
 {
     while (head != end)
     {
         if (*head == key) return head;
-        head++;
+        ++head;
     }
     perror("the element not find!\nReturn end as default.\n");
     return end;
@@ -59,7 +59,7 @@ void test_of_container()
     }
     v.pop_back();
     v.push_back(5);
-    int b = static_cast<int>(find(v.cbegin(),v.cend(),5));
+    int const b = static_cast<int>(find(v.cbegin(),v.cend(),5));
     printf("The \"5\" is find? %d \n", b);
     vector<int> vint;
     for(int i = 0; i < size; i++)
@@ -67,8 +67,8 @@ void test_of_container()
         vint.push_back(rand()%100);
     }
     PrintVec(vint);
-    vector<string> vStr {"Hello ", "World", "!"};
-    for(auto vs : vStr)
+    const vector<string> vStr {"Hello ", "World", "!"};
+    for(auto &vs : vStr)
         printf("%s", vs.data());
     puts("");
     FromStringToDeque(vStr);

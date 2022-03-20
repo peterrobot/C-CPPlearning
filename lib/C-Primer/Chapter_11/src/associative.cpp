@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, int>> StoreStringInt2VectorPair(std::vector<s
         pa.push_back({*itStr++, *itInt++});
         size++;
     }
-    printf_s("%d %s is added.\n", size, size > 1 ? "elements" : "element");
+    printf_s("%llu %s is added.\n", size, size > 1 ? "elements" : "element");
     return pa;
 }
 
