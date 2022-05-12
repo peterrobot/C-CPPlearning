@@ -1,10 +1,22 @@
 #include "basic_variable.h"
 #include <iostream>
 #include <type_traits>
+#include <limits>
 
+template <typename T>
 void show_size()
 {
     using std::cout;
+    cout << typeid(T).name() << ":\nmax: " << static_cast<long long>(std::numeric_limits<T>::max())
+    << "\nmin: " << static_cast<long long>(std::numeric_limits<T>::min()) << '\n';
+}
+
+void show_size()
+{
+    show_size<char>();
+    show_size<int>();
+    show_size<unsigned char>();
+    show_size<unsigned int>();
 }
 
 void test_of_convert()
@@ -94,10 +106,10 @@ void test_of_as_init()
 template <typename T>
 void check_class()
 {
-    std::cout << "Type name " << typeid(T) << std::endl
-        << "Is POD: " << std::is_pod_v<T>() << std::endl
-		<< "Is trivial type" << std::is_pod_v<T>()
-		<< "./tIs trivial constructor" << std::is_trivially_constructible_v<T>() << std::endl;
+    std::cout << "Type name " << typeid(T).name() << std::endl
+        << "Is POD: " << std::is_pod_v<T> << std::endl
+		<< "Is trivial type" << std::is_pod_v<T>
+		<< "./tIs trivial constructor" << std::is_trivially_constructible_v<T> << std::endl;
 }
 
 void test_of_init_list()
@@ -121,8 +133,19 @@ void test_of_init_list()
     check_class<AggregateExample>();
 }
 
+void test_of_compound(int &a)
+{
+    int* p = &a;
+    a = 10;
+    *p = 20;
+    int local = 0;
+    p = &local;
+    local = 10;
+    *p = 20;
+}
+
 void test_of_variables()
 {
-    test_of_convert();
-    test_of_convert_C();
+    int c = 3;
+    test_of_compound(c);
 }

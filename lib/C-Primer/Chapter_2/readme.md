@@ -101,6 +101,8 @@ If the variable is assigned to a value as soon as it is defined, we say this var
 
 #### List initialization
 
+>**C++11 Only** feature, expand its usage in **C++14**
+
 There are two types of list initialization: Direct-list-initialization and Copy-list-initialization.
 
 Syntax:
@@ -145,6 +147,57 @@ Notes:
 1. **braced-init-list**: structure like this `{arg1, arg2, ...}`
 
 ### Compound type
+
+Any declearation is composed by a *base type* and *declarator*. Every *declarator* names a specific variable and appoints the compound information which is related to *base type*.
+
+> Notice: *declarator* is composed with variable name and compound information, which means that compound declaration dose not have an impact on type but rather name. For example:
+
+```c++
+int a=0, &b = a;
+int* p = &a, ptr = 0;
+// a is int, b is a reference to int, p is a pointer to int, ptr is int
+```
+
+#### reference(&/&&)
+
+`reference` means to give a new name to an existing variable. Every *reference type* refers to another type. We often use `&` in declarator to indicates this variable is a reference.
+
+> Notice: Every `reference` has to bind to a specific variable when initialized. Because of this special function, reference variables must be initialized with the bound target and which target it binds to is not alterable.
+
+Though reference behaves pretty much like local variable on Cpp code level, in assemble code level, however, reference behave more likely to pointer. By the way, from this perspective, we can understand why reference doesn't consume extra space.
+
+```c++
+// Environment: Visual Studio 2019(16.11.11) MSVC
+void test_of_compound(int &a)
+{
+    // prelunch disassemble code
+    int *p = &a;
+mov     rax,qword ptr [a]
+mov     qword ptr [p],rax
+    a = 10;
+mov     rax,qword ptr [a]
+mov     dword ptr [a],0Ah
+    *p = 20;
+mov     rax,qword ptr [p]
+mov     dword ptr [p],14h
+    int local = 10;
+mov     dword ptr [local],0
+    p = &local;
+mov     rax,qword ptr [local]
+mov     qword ptr [p],rax
+    local = 10;
+mov     dword ptr [local],0Ah
+    *p = 20;
+mov     rax,qword ptr [p]
+mov     dword ptr [p],14A
+}
+```
+
+##### Right value reference(&&)
+
+>**C++11 Only** feature
+
+Before we talk about right value reference, it's necessary to understand where does the word right value comes from. However this topic is so big that there is no enough room for it in this passage, so see it in [this article](./Value_Category.md)
 
 ## references
 
