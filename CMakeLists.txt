@@ -8,8 +8,13 @@ message(STATUS "CMake version: ${CMAKE_VERSION}")
 
 ########## Set some variables ##########
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED Ture)
+
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/module)
+
+include(PreventInSourceBuilds)
+include(ProjectBuildSet)
 
 ########## Add source ##########
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib)
