@@ -17,7 +17,7 @@ include(PreventInSourceBuilds)
 include(ProjectBuildSet)
 
 ########## Add source ##########
-add_subdirectory(${PROJECT_SOURCE_DIR}/lib)
+add_subdirectory(${PROJECT_SOURCE_DIR}/src)
 
 ########## specific executable ##########
 add_executable(${PROJECT_NAME} main.cpp)
