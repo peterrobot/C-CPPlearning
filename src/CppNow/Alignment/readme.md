@@ -8,7 +8,7 @@
 
 ---
 The basic unit of memory is called ***word***. However, *word* is not necessary to be the smallest size of variable. For example, on 32bits machine, one word equals to 32bits but one char always equals 16bits.
-With the analyse above, it's clear that how variables are stored in memory matters the performace, then for different hardware, the impact of *word* varies.
+With the analyse above, it's clear that how variables are stored in memory matters the performance, then for different hardware, the impact of *word* varies.
 
 1. Early CPUs: Only support reading memories per *word*.
 2. Modern X86 CPUs: Support arbitrary reading memories. However, reading memory cross *word*s has a cost on performance.

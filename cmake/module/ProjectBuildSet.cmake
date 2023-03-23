@@ -1,7 +1,3 @@
-set(CMAKE_DEBUG_TARGET_PROPERTIES
-
-)
-
 include(ProjectConfigDefine)
 include(ProjectBuildHelper)
 
